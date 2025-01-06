@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define a structure for the hash map
+typedef struct
+{
+ int value;
+ int index;
+} HashMapItem;
+
+// Simple hash map function to find indices
+int *twoSum(int *nums, int numsSize, int target, int *returnSize)
+{
+ // Create an array to act as the hash map
+ HashMapItem *map = (HashMapItem *)malloc(numsSize * sizeof(HashMapItem));
+ int mapSize = 0;
+
+ *returnSize = 2;
+ int *result = (int *)malloc(2 * sizeof(int));
+
+ for (int i = 0; i < numsSize; i++)
+ {
+  int complement = target - nums[i];
+
+  // Search for complement in the map
+  for (int j = 0; j < mapSize; j++)
+  {
+   if (map[j].value == complement)
+   {
+    result[0] = map[j].index;
+    result[1] = i;
+    free(map);
+    return result;
+   }
+  }
+
+  // Store the current number in the map
+  map[mapSize].value = nums[i];
+  map[mapSize].index = i;
+  mapSize++;
+ }
+
+ free(map);
+ return NULL;
+}
+
+// Main function to test the solution
+int main()
+{
+ int nums1[] = {2, 7, 11, 15};
+ int target1 = 9;
+ int returnSize;
+ int *result = twoSum(nums1, 4, target1, &returnSize);
+ printf("Output: [%d, %d]\n", result[0], result[1]);
+ free(result);
+
+ int nums2[] = {3, 2, 4};
+ int target2 = 6;
+ result = twoSum(nums2, 3, target2, &returnSize);
+ printf("Output: [%d, %d]\n", result[0], result[1]);
+ free(result);
+
+ int nums3[] = {3, 3};
+ int target3 = 6;
+ result = twoSum(nums3, 2, target3, &returnSize);
+ printf("Output: [%d, %d]\n", result[0], result[1]);
+ free(result);
+
+ return 0;
+}
