@@ -13,7 +13,7 @@ int main()
             if (i == a || j == a)
                 printf("*");
             else
-                printf("  ");
+                printf(" ");
         }
         printf("\n");
     }
