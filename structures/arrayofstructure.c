@@ -33,7 +33,7 @@ int main()
 
  for (int i = 0; i < 4; i++)
  {
-  //printf("%s\n", arr[i].name);
+  printf("%s\n", arr[i].name);
   puts(arr[i].name);
   printf("century = %d\n", arr[i].century);
   printf("run = %d\n", arr[i].run);

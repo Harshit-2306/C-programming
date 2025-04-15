@@ -54,6 +54,8 @@ void quick_sort(int a[], int s, int e)
  quick_sort(a, s, p - 1);
  quick_sort(a, p + 1, e);
 }
+
+
 int main()
 {
  int n;
